@@ -1,7 +1,14 @@
-const connectDB = require("./config/db");
+// config/db.js
+const mongoose = require("mongoose");
 
-connectDB().then(() => {
-  app.listen(PORT, () =>
-    console.log(`🚀 Server running at http://localhost:${PORT}`)
-  );
-});
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("✅ MongoDB connected");
+  } catch (error) {
+    console.error("❌ MongoDB connection error:", error.message);
+    process.exit(1);
+  }
+};
+
+module.exports = connectDB;

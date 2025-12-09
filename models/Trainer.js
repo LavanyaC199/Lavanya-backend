@@ -1,4 +1,3 @@
-// models/Trainer.js
 const mongoose = require("mongoose");
 
 const trainerSchema = new mongoose.Schema(
